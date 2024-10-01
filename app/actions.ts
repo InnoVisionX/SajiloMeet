@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 
 import { revalidatePath } from "next/cache";
 
-export async function SettingsAction(prevState: any, formData: FormData) {
+export async function SettingsAction(prevState: unknown, formData: FormData) {
   const session = await requireUser();
 
   const submission = parseWithZod(formData, {
@@ -19,7 +19,7 @@ export async function SettingsAction(prevState: any, formData: FormData) {
     return submission.reply();
   }
 
-  const user = await prisma.user.update({
+  await prisma.user.update({
     where: {
       id: session.user?.id as string,
     },
@@ -33,7 +33,7 @@ export async function SettingsAction(prevState: any, formData: FormData) {
 }
 
 export async function CreateEventTypeAction(
-  prevState: any,
+  prevState: unknown,
   formData: FormData,
 ) {
   const session = await requireUser();
@@ -57,7 +57,7 @@ export async function CreateEventTypeAction(
     return submission.reply();
   }
 
-  const data = await prisma.eventType.create({
+  await prisma.eventType.create({
     data: {
       title: submission.value.title,
       duration: submission.value.duration,
@@ -71,7 +71,10 @@ export async function CreateEventTypeAction(
   return redirect("/dashboard");
 }
 
-export async function EditEventTypeAction(prevState: any, formData: FormData) {
+export async function EditEventTypeAction(
+  prevState: unknown,
+  formData: FormData,
+) {
   const session = await requireUser();
 
   const submission = await parseWithZod(formData, {
@@ -94,7 +97,7 @@ export async function EditEventTypeAction(prevState: any, formData: FormData) {
     return submission.reply();
   }
 
-  const data = await prisma.eventType.update({
+  await prisma.eventType.update({
     where: {
       id: formData.get("id") as string,
       userId: session.user?.id as string,
@@ -114,7 +117,7 @@ export async function EditEventTypeAction(prevState: any, formData: FormData) {
 export async function DeleteEventTypeAction(formData: FormData) {
   const session = await requireUser();
 
-  const data = await prisma.eventType.delete({
+  await prisma.eventType.delete({
     where: {
       id: formData.get("id") as string,
       userId: session.user?.id as string,
@@ -125,7 +128,7 @@ export async function DeleteEventTypeAction(formData: FormData) {
 }
 
 export async function updateEventTypeStatusAction(
-  prevState: any,
+  prevState: unknown,
   {
     eventTypeId,
     isChecked,
@@ -137,7 +140,7 @@ export async function updateEventTypeStatusAction(
   try {
     const session = await requireUser();
 
-    const data = await prisma.eventType.update({
+    await prisma.eventType.update({
       where: {
         id: eventTypeId,
         userId: session.user?.id as string,
@@ -162,6 +165,7 @@ export async function updateEventTypeStatusAction(
 
 export async function updateAvailabilityAction(formData: FormData) {
   const session = await requireUser();
+  console.log(session);
 
   const rawData = Object.fromEntries(formData.entries());
   const availabilityData = Object.keys(rawData)
@@ -213,7 +217,7 @@ export async function createMeetingAction(formData: FormData) {
     throw new Error("User not found");
   }
 
-  const eventTypeData = await prisma.eventType.findUnique({
+  await prisma.eventType.findUnique({
     where: {
       id: formData.get("eventTypeId") as string,
     },
@@ -223,20 +227,21 @@ export async function createMeetingAction(formData: FormData) {
     },
   });
 
-  const formTime = formData.get("fromTime") as string;
-  const meetingLength = Number(formData.get("meetingLength"));
-  const eventDate = formData.get("eventDate") as string;
+  // const formTime = formData.get("fromTime") as string;
+  // const meetingLength = Number(formData.get("meetingLength"));
+  // const eventDate = formData.get("eventDate") as string;
 
-  const startDateTime = new Date(`${eventDate}T${formTime}:00`);
+  // const startDateTime = new Date(`${eventDate}T${formTime}:00`);
 
   // Calculate the end time by adding the meeting length (in minutes) to the start time
-  const endDateTime = new Date(startDateTime.getTime() + meetingLength * 60000);
+  // const endDateTime = new Date(startDateTime.getTime() + meetingLength * 60000);
 
   return redirect(`/success`);
 }
 
 export async function cancelMeetingAction(formData: FormData) {
   const session = await requireUser();
+  console.log(formData);
 
   const userData = await prisma.user.findUnique({
     where: {
