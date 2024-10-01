@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "./components/dashboard/ThemeProvider";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
@@ -27,6 +28,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <NextTopLoader color="#2563EB" showSpinner={false} />
           <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
           {children}
         </ThemeProvider>
