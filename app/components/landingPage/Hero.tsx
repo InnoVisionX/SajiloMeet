@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import HeroImage from "@/public/better.png";
 import { AuthModal } from "./AuthModal";
+import { HeroText } from "./HeroText";
 
 export function Hero() {
   return (
@@ -12,16 +13,16 @@ export function Hero() {
             Introducing SajiloMeet Beta
           </span>
 
-          <h1 className="mt-8 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-none">
-            Scheduling made{" "}
-            <span className="block text-primary">super easy!</span>
-          </h1>
+          <div className="mt-8 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-none">
+            <HeroText />
+          </div>
 
           <p className="max-w-xl mx-auto mt-4   lg:text-lg text-muted-foreground ">
             Scheduling a meeting can be a pain. But we at SajiloMeet make it
             easy for your clients to schedule meetings with you.
           </p>
-          <div className=" mt-5 mb-12">
+
+          <div className="mt-5 mb-12">
             <AuthModal />
           </div>
         </div>
