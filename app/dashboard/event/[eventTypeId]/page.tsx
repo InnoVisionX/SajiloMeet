@@ -1,4 +1,4 @@
-import { EditEventTypeForm } from "@/app/components/dashboard/EditEventTypeForm";
+import { EditEventTypeForm } from "@/app/_components/dashboard/EditEventTypeForm";
 import prisma from "@/app/lib/db";
 import { notFound } from "next/navigation";
 import React from "react";

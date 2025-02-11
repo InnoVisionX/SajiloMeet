@@ -1,4 +1,4 @@
-import { EmptyState } from "@/app/components/dashboard/EmptyState";
+import { EmptyState } from "@/app/_components/dashboard/EmptyState";
 import { auth } from "@/app/lib/auth";
 
 import {

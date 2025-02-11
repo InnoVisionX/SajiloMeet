@@ -8,7 +8,7 @@ import { BookMarked, CalendarX2, Clock } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { SubmitButton } from "@/app/components/SubmitButton";
+import { SubmitButton } from "@/app/_components/SubmitButton";
 import { createMeetingAction } from "@/app/actions";
 
 const targetDate = new Date(2024, 8, 19); // Note: month is 0-indexed, so 8 is September

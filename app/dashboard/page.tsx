@@ -6,7 +6,7 @@ import prisma from "../lib/db";
 import { requireUser } from "../lib/hooks";
 import { ExternalLink, Pen, Settings, Trash, Users2 } from "lucide-react";
 
-import { EmptyState } from "../components/dashboard/EmptyState";
+import { EmptyState } from "../_components/dashboard/EmptyState";
 
 import {
   DropdownMenu,
@@ -17,8 +17,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MenuActiveSwitcher } from "../components/dashboard/EventTypeSwitcher";
-import { CopyLinkMenuItem } from "../components/dashboard/CopyLinkMenuItem";
+import { MenuActiveSwitcher } from "../_components/dashboard/EventTypeSwitcher";
+import { CopyLinkMenuItem } from "../_components/dashboard/CopyLinkMenuItem";
 
 async function getData(id: string) {
   const data = await prisma.user.findUnique({

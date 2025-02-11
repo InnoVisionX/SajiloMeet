@@ -1,7 +1,7 @@
 "use client";
 
 import { CreateEventTypeAction } from "@/app/actions";
-import { SubmitButton } from "@/app/components/SubmitButton";
+import { SubmitButton } from "@/app/_components/SubmitButton";
 import { eventTypeSchema } from "@/app/lib/zodSchemas";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/ButtonGroup";

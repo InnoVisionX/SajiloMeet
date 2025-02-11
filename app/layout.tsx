@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import { ThemeProvider } from "./components/dashboard/ThemeProvider";
+import { ThemeProvider } from "./_components/dashboard/ThemeProvider";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";

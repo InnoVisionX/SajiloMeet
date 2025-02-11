@@ -18,8 +18,8 @@ import prisma from "../lib/db";
 import { redirect } from "next/navigation";
 import Logo from "@/public/logo.png";
 import Image from "next/image";
-import { DashboardLinks } from "../components/dashboard/DashboardLinks";
-import { ThemeToggle } from "../components/dashboard/ThemeToggle";
+import { DashboardLinks } from "../_components/dashboard/DashboardLinks";
+import { ThemeToggle } from "../_components/dashboard/ThemeToggle";
 import { Toaster } from "@/components/ui/sonner";
 import { auth, signOut } from "../lib/auth";
 
